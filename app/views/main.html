@@ -1,23 +1,11 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<form ng-submit="setUrlAndPort()" method="post">
+    <div class="form-group">
+        <input type="text" value="Server URL" name="server" ng-model="server">
+    </div>
+    <div class="form-group">
+        <input type="number" name="port" id="" value="Port" ng-model="port"/>
+    </div>
+    <button type="submit" value="Save Settings" class="btn btn-block">Save Settings</button>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+    {{ version }}
+</form>

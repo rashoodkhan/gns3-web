@@ -1,7 +1,10 @@
 {
   "name": "gns3web",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^3.9.3",
+    "restangular": "^1.5.1"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",

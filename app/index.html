@@ -40,8 +40,7 @@
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+                <li class=""><a href="#/version">Version</a></li>
             </ul>
           </div>
         </div>
@@ -50,12 +49,6 @@
 
     <div class="container">
     <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
 
@@ -81,13 +74,18 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/config.js"></script>
+        <script src="scripts/controllers/version.js"></script>
+        <script src="scripts/services/version.js"></script>
         <!-- endbuild -->
 </body>
 </html>

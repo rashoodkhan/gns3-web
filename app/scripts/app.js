@@ -8,26 +8,25 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('gns3WebApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+    'restangular'
+  ]);
+
+app.config(function ($routeProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/version', {
+        templateUrl: 'views/version.html',
+        controller: 'VersionCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+
+      RestangularProvider.setBaseUrl('http://');
   });
