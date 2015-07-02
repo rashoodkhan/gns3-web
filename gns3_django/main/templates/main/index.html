@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GNS3 Web Interface</title>
+    <!--  Le Vis Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.js"></script>
+
+    <!--  Le Bootstrap Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- JQuery For Ajax -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <!--  Application file -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+    <style media="screen">
+      #network {
+        width: 100%;
+        height: 600px;
+        border: 5px dotted black;
+      }
+    </style>
+  </head>
+  <body onload="draw();">
+    <div class="container">
+      <div class="jumbotron">
+        <h1>GNS3 Web Interface</h1>
+        <h3>Server Details</h3>
+        <h4>Version - {{version}}</h4>
+        <h4>Local - {{local}}</h4>
+      </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <input id="node-id" class="form-control" type="text" placeholder="Enter Node ID"><br>
+        <input id="node-label" type="text" class="form-control" placeholder="Enter Name"><br>
+        <a type="button" class="btn btn-default btn-block" onclick="addNode();">Add Node</a>
+        <a type="button" class="btn btn-primary btn-block" onclick="updateNode();">Update Node</a>
+        <a type="button" class="btn btn-danger btn-block" onclick="removeNode();">Delete Node</a>
+      </div>
+      <div class="col-md-3">
+
+        <input id="edge-id" type="text" placeholder="Enter Edge ID" class="form-control"><br>
+        <input id="edge-from" type="text" placeholder="From Node ID" class="form-control"><br>
+        <input id="edge-to" type="text" placeholder="To Node ID" class="form-control"><br>
+        <a type="button" class="btn btn-default btn-block" onclick="addEdge();">Add Edge</a>
+        <a type="button" class="btn btn-primary btn-block" onclick="updateEdge();">Update Edge</a>
+        <a type="button" class="btn btn-danger btn-block" onclick="removeEdge();">Delete Edge</a>
+      </div>
+    </div>
+    <h4>The Network</h4>
+    <div class="" id="network">
+
+    </div>
+    </div>
+  </body>
+</html>
