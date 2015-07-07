@@ -3,3 +3,7 @@ dist
 .tmp
 .sass-cache
 bower_components
+*.pyc
+*.sqlite3
+.idea/
+idea/
