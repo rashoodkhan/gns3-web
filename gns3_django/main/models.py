@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class ServerSettings(models.Model):
 	"""
@@ -8,6 +9,7 @@ class ServerSettings(models.Model):
 	"""
 	url = models.CharField('Server URL', max_length=200)
 	port = models.IntegerField('Server Port')
+	created_at = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.url + ':' + self.port
+		return self.url + ':' + str(self.port)

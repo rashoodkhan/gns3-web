@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', 'main.views.home', name="index"),
     url(r'^server/version/?$', 'main.views.get_server_version', name="server_version"),
     url(r'^project/create', 'main.views.create_project',name="create_project"),
+    url(r'^settings/?$', 'main.views.settings', name="settings"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

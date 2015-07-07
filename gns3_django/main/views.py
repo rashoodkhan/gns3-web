@@ -1,6 +1,16 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import requests
+
+from models import ServerSettings
+
+SERVER_URL = None
+SERVER_PORT = None
+
+def createURL(parameter):
+	url = "http://"+str(SERVER_URL)+":"+str(SERVER_PORT)+"/v1/"+str(parameter)
+	return url
 
 def home(request):
 	r = requests.get("http://localhost:8000/v1/version")
@@ -43,6 +53,25 @@ def start_vcps(request,project_id,vcps_id_1,vcps_id_2,lport,rport):
 	requests.post(url_1)
 	requests.post(url_2)
 
+	return JsonResponse({"status":"success"})
+
+@csrf_exempt
+def settings(request):
+	if request.method == 'POST':
+		server_url = request.POST.get("serverURL")
+		server_port = request.POST.get("serverPort")
+		print server_url
+		print str(server_port)
+		r = requests.get("http://"+str(server_url)+":"+str(server_port)+"/v1/version")
+		print r.status_code
+		if r.status_code == 200:
+			#The given server URL and Port are working
+			print "Hello"
+			server_settings = ServerSettings.objects.create(url=server_url,port=server_port)
+			server_settings.save()
+		else:
+			#The given server credentials are not working, Raise Error
+			return JsonResponse({"status":"Failed"})
 	return JsonResponse({"status":"success"})
 
 
