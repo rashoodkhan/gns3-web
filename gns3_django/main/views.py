@@ -11,7 +11,7 @@ def get_server_version(request):
 	r = requests.get("http://localhost:8000/v1/version")
 	return JsonResponse(r.json())
 
-def create_project(request):
+def create_project(request,name):
 	data = {"name":name}
 	res = requests.post("http://localhost:8000/v1/projects",data=data)
 	json_response = res.json()
