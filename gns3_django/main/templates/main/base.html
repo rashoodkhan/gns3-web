@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>GNS3 Web Interface</title>
+    <!--  Le Vis Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.js"></script>
+
+    <!--  Le Bootstrap Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- JQuery For Ajax -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- Le Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--  Application file -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+    <style media="screen">
+      #network {
+        width: 100%;
+        height: 600px;
+        border: 5px dotted black;
+      }
+        .border-radius-0{
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-inverse border-radius-0">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">GNS3 Web</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Application</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#settingsModal">Settings</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{% block settingsModal %}
+    <div class="modal fade" id="settingsModal" tabindex="1" role="dialog" aria-labelledby="settingsModelLabel">
+        <div class="modal-dialog" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="settingsModelLabel">Server Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="settingsURL" placeholder="Server URL">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="settingsPort" placeholder="Server Port">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="setServerDetails();">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock settingsModal %}
+{% block body %}
+{% endblock body %}
+</html>
