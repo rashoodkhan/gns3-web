@@ -88,10 +88,36 @@ function draw() {
   var container = document.getElementById('network');
   var data = {
     nodes: nodes,
-    edges, edges
+    edges: edges
   };
   var options = {};
   network = new vis.Network(container, data, options);
+}
+
+/*
+  Sets the server URL and Port as defined by the user
+ */
+function setServerDetails(){
+  var data = {};
+  var serverURL = document.getElementById('settingsURL').value;
+  var serverPort = document.getElementById('settingsPort').value;
+  data.serverURL = serverURL;
+  data.serverPort = serverPort;
+  console.log(data);
+  $.ajax({
+    url: 'settings',
+    type: 'POST',
+    data: data,
+    success: function(data,status,jqHXR){
+      alert("The server details have been updated");
+      console.log(data);
+      location.reload();
+      //Close the modal and reload the page with new settings
+    },
+    error: function(err){
+      console.log(err);
+    }
+  })
 }
 
 // function createProject(project_name) {
