@@ -13,3 +13,15 @@ class ServerSettings(models.Model):
 
 	def __str__(self):
 		return self.url + ':' + str(self.port)
+		
+class Project(models.Model):
+    """
+        Project Model stores the information
+        for Projects
+    """
+    name = models.CharField('Project Name', max_length=200)
+    project_id = models.CharField('Project ID', max_length=200)
+    created_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name+"::"+self.project_id
